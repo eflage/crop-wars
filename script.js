@@ -111,6 +111,49 @@ function closePanel() {
   panel.innerHTML = "";
 }
 
+function openHelp() {
+  const panel = document.getElementById("action-panel");
+  panel.classList.add("active");
+
+  const priceRows = CROPS.map(
+    c => `<tr>
+            <td>${c.name}</td>
+            <td>$${c.min.toLocaleString()} – $${c.max.toLocaleString()}</td>
+          </tr>`
+  ).join("");
+
+  panel.innerHTML = `
+    <div><strong>HOW TO PLAY // CROP WARS</strong></div>
+    <div class="help-content">
+      <p>You have <span class="help-highlight">30 days</span> to earn the highest Net Worth (Cash minus Debt).</p>
+      <ul>
+        <li><span class="help-highlight">BUY / SELL:</span> Tap a crop on the screen to select it, then buy low and sell high.</li>
+        <li><span class="help-highlight">TRAVEL:</span> Move to a new market for fresh prices. Each trip uses <strong>1 day</strong> and adds <strong>10% interest</strong> to unpaid debt.</li>
+        <li><span class="help-highlight">AG BANK:</span> Pay off your $2,000 seed loan early before interest snowballs.</li>
+        <li><span class="help-highlight">UPGRADE:</span> Spend $1,500 to add +50 bushels of truck space.</li>
+      </ul>
+
+      <div class="help-highlight" style="margin-top: 8px;">TYPICAL MARKET RANGES:</div>
+      <table class="help-table">
+        <thead>
+          <tr>
+            <th>CROP</th>
+            <th>NORMAL RANGE</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${priceRows}
+        </tbody>
+      </table>
+
+      <p style="margin-top: 8px;"><strong>TIP:</strong> Watch the event ticker for bumper crops (cheap buys) and shortages (huge payouts)!</p>
+    </div>
+    <button style="width: 100%;" onclick="closePanel()">GOT IT</button>
+  `;
+}
+
+
+
 function openTrade(mode) {
   if (state.gameOver) return;
   const crop = CROPS[state.selectedCrop];
@@ -368,3 +411,8 @@ function submitEndScore(netWorth) {
 
 // Start on load
 initGame();
+
+if (!localStorage.getItem("cropwars_seen_help")) {
+  openHelp();
+  localStorage.setItem("cropwars_seen_help", "true");
+}
