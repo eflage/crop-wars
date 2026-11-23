@@ -232,3 +232,31 @@ input[type="text"] {
   color: var(--lcd-bg);
   font-weight: bold;
 }
+
+/* Help Guide Styling */
+.help-content {
+  font-size: 0.82rem;
+  line-height: 1.4;
+  margin: 8px 0;
+  max-height: 220px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.help-content p {
+  margin: 0 0 8px 0;
+}
+
+.help-content ul {
+  margin: 0 0 8px 0;
+  padding-left: 18px;
+}
+
+.help-content li {
+  margin-bottom: 4px;
+}
+
+.help-highlight {
+  color: var(--lcd-bg);
+  font-weight: bold;
+}
