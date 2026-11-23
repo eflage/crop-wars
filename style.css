@@ -260,3 +260,23 @@ input[type="text"] {
   color: var(--lcd-bg);
   font-weight: bold;
 }
+
+
+.help-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 4px;
+  font-size: 0.78rem;
+}
+
+.help-table th {
+  text-align: left;
+  border-bottom: 1px solid #555;
+  color: #aaa;
+  padding-bottom: 2px;
+}
+
+.help-table td {
+  padding: 3px 0;
+  border-bottom: 1px solid #2e3033;
+}
