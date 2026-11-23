@@ -1,0 +1,234 @@
+:root {
+  --lcd-bg: #9bbc0f;
+  --lcd-dark: #0f380f;
+  --lcd-mid: #306230;
+  --case-body: #2b2d30;
+  --btn-dark: #1b1c1e;
+  --btn-blue: #2c4c7e;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Courier New', Courier, monospace;
+  user-select: none;
+}
+
+body {
+  background-color: #18191b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 15px;
+}
+
+/* Calculator Casing */
+.calculator {
+  background: var(--case-body);
+  width: 100%;
+  max-width: 440px;
+  border-radius: 18px 18px 36px 36px;
+  padding: 22px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.15);
+  border: 3px solid #111;
+}
+
+.calc-header {
+  color: #ccc;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Retro LCD Screen */
+.lcd-bezel {
+  background: #4b5248;
+  padding: 14px;
+  border-radius: 10px 10px 24px 10px;
+  box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.7);
+}
+
+.lcd-screen {
+  background-color: var(--lcd-bg);
+  color: var(--lcd-dark);
+  padding: 14px;
+  border: 3px solid var(--lcd-dark);
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: inset 2px 2px 6px rgba(15, 56, 15, 0.35);
+  position: relative;
+}
+
+/* Scanline overlay */
+.lcd-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(15, 56, 15, 0.06) 50%, transparent 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  border-bottom: 2px solid var(--lcd-dark);
+  padding-bottom: 8px;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.location-bar {
+  background: var(--lcd-dark);
+  color: var(--lcd-bg);
+  padding: 4px 8px;
+  font-weight: bold;
+  text-align: center;
+  margin: 8px 0;
+  letter-spacing: 1px;
+}
+
+.event-log {
+  min-height: 42px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  border: 1px dashed var(--lcd-dark);
+  padding: 5px 6px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  font-weight: bold;
+}
+
+th {
+  text-align: left;
+  border-bottom: 2px solid var(--lcd-dark);
+  padding-bottom: 3px;
+}
+
+td {
+  padding: 5px 2px;
+}
+
+.crop-row {
+  cursor: pointer;
+}
+
+.crop-row:hover,
+.crop-row.selected {
+  background-color: var(--lcd-dark);
+  color: var(--lcd-bg);
+}
+
+.screen-footer {
+  font-size: 0.75rem;
+  text-align: center;
+  opacity: 0.8;
+}
+
+/* Interactive Controls */
+.controls {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+button {
+  background: var(--btn-dark);
+  color: #fff;
+  border: 2px solid #000;
+  border-radius: 6px;
+  padding: 10px 4px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #000;
+  transition: transform 0.05s;
+}
+
+button:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #000;
+}
+
+button.primary {
+  background: var(--btn-blue);
+}
+
+button.wide {
+  grid-column: span 2;
+}
+
+/* Action & Leaderboard Drawer */
+.action-panel {
+  margin-top: 12px;
+  background: #1f2022;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  color: #eee;
+  display: none;
+  font-size: 0.88rem;
+}
+
+.action-panel.active {
+  display: block;
+}
+
+.action-row {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+input[type="number"],
+input[type="text"] {
+  width: 100%;
+  padding: 6px;
+  background: var(--lcd-bg);
+  color: var(--lcd-dark);
+  border: 2px solid #000;
+  font-weight: bold;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+}
+
+.town-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+/* Leaderboard Styling */
+.leaderboard-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+}
+
+.leaderboard-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 6px;
+  border-bottom: 1px solid #333;
+}
+
+.leaderboard-list li:nth-child(1) {
+  color: var(--lcd-bg);
+  font-weight: bold;
+}
