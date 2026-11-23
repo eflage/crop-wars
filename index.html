@@ -7,62 +7,70 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<main class="page-wrapper">
 
-<div class="calculator">
-  <div class="calc-header">
-    <span>TEXAS-AG 84 PLUS</span>
-    <span>CROP WARS v1.1</span>
-  </div>
-
-  <div class="lcd-bezel">
-    <div class="lcd-screen" id="screen">
-      <div>
-        <div class="stats-grid">
-          <div>DAY: <span id="stat-day">1</span>/30</div>
-          <div>CASH: $<span id="stat-cash">2000</span></div>
-          <div>DEBT: $<span id="stat-debt">2000</span></div>
-          <div>TRUCK: <span id="stat-space">0</span>/<span id="stat-max">100</span></div>
+  <div class="calculator">
+    <div class="calc-header">
+      <span>TEXAS-AG 84 PLUS</span>
+      <span>CROP WARS v1.1</span>
+    </div>
+  
+    <div class="lcd-bezel">
+      <div class="lcd-screen" id="screen">
+        <div>
+          <div class="stats-grid">
+            <div>DAY: <span id="stat-day">1</span>/30</div>
+            <div>CASH: $<span id="stat-cash">2000</span></div>
+            <div>DEBT: $<span id="stat-debt">2000</span></div>
+            <div>TRUCK: <span id="stat-space">0</span>/<span id="stat-max">100</span></div>
+          </div>
+  
+          <div class="location-bar" id="stat-town">COUNTY CO-OP</div>
+  
+          <div class="event-log" id="event-log">
+            Welcome! Buy low, sell high, pay off your seed loan.
+          </div>
+  
+          <table>
+            <thead>
+              <tr>
+                <th>CROP</th>
+                <th>PRICE</th>
+                <th>OWNED</th>
+              </tr>
+            </thead>
+            <tbody id="market-body"></tbody>
+          </table>
         </div>
-
-        <div class="location-bar" id="stat-town">COUNTY CO-OP</div>
-
-        <div class="event-log" id="event-log">
-          Welcome! Buy low, sell high, pay off your seed loan.
+  
+        <div class="screen-footer">
+          SELECT CROP ABOVE OR USE KEYS BELOW
         </div>
-
-        <table>
-          <thead>
-            <tr>
-              <th>CROP</th>
-              <th>PRICE</th>
-              <th>OWNED</th>
-            </tr>
-          </thead>
-          <tbody id="market-body"></tbody>
-        </table>
-      </div>
-
-      <div class="screen-footer">
-        SELECT CROP ABOVE OR USE KEYS BELOW
       </div>
     </div>
+  
+    <!-- Interactive Action / Leaderboard Drawer -->
+    <div class="action-panel" id="action-panel"></div>
+  
+    <!-- Calculator Buttons -->
+    <div class="controls">
+      <button class="primary" onclick="openTrade('buy')">BUY</button>
+      <button class="primary" onclick="openTrade('sell')">SELL</button>
+      <button onclick="openBank()">AG BANK</button>
+      <button onclick="openTravel()">TRAVEL</button>
+      <button class="wide" onclick="buyUpgrade()">UPGRADE TRUCK ($1500)</button>
+      <button onclick="openLeaderboard()">SCORES</button>
+      <button onclick="openHelp()">HELP</button>
+      <button style="grid-column: span 4;" onclick="initGame()">NEW SEASON</button>
+    </div>
   </div>
-
-  <!-- Interactive Action / Leaderboard Drawer -->
-  <div class="action-panel" id="action-panel"></div>
-
-  <!-- Calculator Buttons -->
-  <div class="controls">
-    <button class="primary" onclick="openTrade('buy')">BUY</button>
-    <button class="primary" onclick="openTrade('sell')">SELL</button>
-    <button onclick="openBank()">AG BANK</button>
-    <button onclick="openTravel()">TRAVEL</button>
-    <button class="wide" onclick="buyUpgrade()">UPGRADE TRUCK ($1500)</button>
-    <button onclick="openLeaderboard()">SCORES</button>
-    <button onclick="openHelp()">HELP</button>
-    <button style="grid-column: span 4;" onclick="initGame()">NEW SEASON</button>
-  </div>
-</div>
+  <footer class="calc-footer">
+    Built by <strong>IowaNerdette</strong> &bull;
+    <a href="https://ko-fi.com" target="_blank" rel="noopener noreferrer">
+      ☕ Support on Ko-fi
+    </a>
+  </footer>
+</main>
 
 <script src="script.js"></script>
 </body>
