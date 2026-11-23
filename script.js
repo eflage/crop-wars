@@ -31,8 +31,8 @@ function initGame() {
     maxSpace: 100,
     town: TOWNS[0],
     selectedCrop: 0,
-    inventory:,
-    prices:,
+    inventory:new Array(CROPS.length).fill(0),
+    prices:new Array(CROPS.length).fill(0),
     gameOver: false,
     scoreSaved: false
   };
